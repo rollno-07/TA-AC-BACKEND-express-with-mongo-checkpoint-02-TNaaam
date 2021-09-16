@@ -9,33 +9,31 @@ router.get('/', function(req, res, next) {
   res.render('index',);
 });
 //filter
-router.post('/search',(req,res,next)=>{
-  var fcategory=req.body.fcategory.split(',');
-  var flocation=req.body.flocation;
-  var fdate=req.body.fdate;
-  console.log(fcategory,flocation,fdate)
-  if(fcategory.lenght!==0 && flocation!=''){
+router.get('/search',(req,res,next)=>{
+  var query=req.query;
+  console.log(query.fcategory.split(','))
+  if(query.fcategory!=='' && query.flocation!=''){
     var filtpara={
-      $and:[{even_category:{$in:fcategory}},{location:flocation}]
+      $and:[{even_category:{$in:query.fcategory.split(',')}},{location:query.flocation}]
     }
   }
-  else if (fcategory.lenght===0 && flocation!='') {
-    var filtpara={location:flocation}
+  else if (query.fcategory==='' && query.flocation!='') {
+    var filtpara={location:query.flocation}
   } 
-  else if(fcategory.lenght!==0 && flocation==''){
-    var filtpara={even_category:{$in:fcategory}}
+  else if(query.fcategory!=='' && query.flocation==''){
+    var filtpara={even_category:{$in:query.fcategory.split(',')}}
   }
   else{
     var filtpara={}
   }
-  if(fdate==='latest'){
+  if(query.fdate==='latest'){
  Event.find(filtpara).sort({start_date:1}).exec((err,events)=>{
    console.log(events)
    if(err) return next(err)
    res.render('events',{events})
  })
   }
-else if(fdate==='oldest'){
+else if(query.fdate==='oldest'){
   Event.find(filtpara).sort({start_date:-1}).exec((err,events)=>{
     console.log(events)
     if(err) return next(err)
