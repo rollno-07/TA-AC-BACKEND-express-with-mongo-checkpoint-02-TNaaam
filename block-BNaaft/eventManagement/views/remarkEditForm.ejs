@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Article</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <a href="/">Home</a>
+        <h1>Edit Remark</h1>
+        <a href="/events/new">Add Events</a>
+    </header>
+    <main>
+        <div class="main">
+        
+            <form class="container" method="POST" action="/remarks/<%=remark.id%>">
+                <header><h1>Remark</h1></header>
+                
+                <div class="form-control">
+                    <label for="text">Remark</label> 
+                    <input id="text" type="text" name="content"  required value="<%=remark.content%>"/>
+                    
+                </div>
+                
+            
+            <div class="form-control"><button type="submit">Update Remark</button></div>
+            
+            
+            <div class="form-control"><a href="/events/<%=remark.eventId%>">Back</a></div>
+            
+          </form>
+        
+        </div>
+    </main>
+    <footer><small>&copy VEM All Rights Reserved</small></footer>
+</body>
+</html>
