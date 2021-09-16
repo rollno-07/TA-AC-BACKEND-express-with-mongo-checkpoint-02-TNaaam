@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <a href="/">Home</a>
+        <h1>Events</h1>
+        <a href="/events/new">Add Events</a>
+    </header>
+    <div class="filter">
+        <a href="/events">All Events</a>
+    <form action="/search/" method="POST">
+        <label for="category">ByCategory</label>
+        <input type="text" name="fcategory">
+        <label for="location">ByLoaction</label>
+        <input type="text" name="flocation">
+        <label for="date">ByDate</label>
+        <select name="fdate" id="date">
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    </div>
+
+    <main>
+        
+            <% events.forEach(event=>{%>
+                <div class="articls">
+               <h1>Title:-<%= event.title%></h1>
+                <li>Summary:-<%= event.summary%></li>
+                <li>Likes:-<%= event.like%> <a href="/events/<%=event.id%>/like">👍🏻</a> </li>
+                
+                <a href="/events/<%=event._id%>"><button>show Event</button></a>
+                
+                </div>
+              <% }) %>
+        
+    </main>
+    <footer><small>&copy VEM All Rights Reserved</small></footer>
+</body>
+</html>

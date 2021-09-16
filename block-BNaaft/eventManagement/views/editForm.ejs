@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Article</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <a href="/">Home</a>
+        <h1>Edit Event</h1>
+        <a href="/events/new">Add Events</a>
+    </header>
+    <main>
+        <div class="main">
+        
+            <form class="container" method="POST" action="/events/<%=event.id%>">
+                <header><h1>Edit <%= event.title%></h1></header>
+                
+                <div class="form-control">
+                    <label for="text">Title</label> 
+                    <input id="text" type="text" name="title" placeholder="Event Name" required value="<%=event.title%>"/>
+                    
+                </div>
+                
+            <div class="form-control">
+                <label for="text">Summary</label>
+               <textarea name="summary" id="text" cols="30" rows="10" placeholder="Summary"><%=event.summary%></textarea>
+               
+            </div>
+            <div class="form-control">
+                <label for="text">Host</label>
+                <input id="text" type="text" name="host" placeholder="Enter Host" required value="<%=event.host%>"/>
+            </div>
+            
+            <div class="form-control">
+                
+                <label for="text">Start Date:-<%=event.start_date.toString().substring(0, 15)%></label>
+                <input id="text" type="date" name="start_date"  required placeholder="<%=event.start_date%>"/>
+            </div>
+            <div class="form-control">
+                <label for="text">End Date:-<%=event.end_date.toString().substring(0, 15)%></label>
+                <input id="text" type="date" name="end_date"  required placeholder="<%=event.end_date%>"/>
+            </div>
+            <div class="form-control">
+                <label for="text">Category(Comma Seprated)</label>
+                <input id="text" type="text" name="even_category" placeholder="Enter Category" required value="<%=event.even_category%>"/>
+            </div>
+            <div class="form-control">
+                <label for="text">Location</label>
+                <input id="text" type="text" name="location" placeholder="Enter Location" required value="<%=event.location%>"/>
+            </div>
+            <div class="form-control"><button type="submit">Update Article</button></div>
+            
+            
+            <div class="form-control"><a href="/events/<%=event.id%>">Back</a></div>
+            
+          </form>
+        
+        </div>
+    </main>
+    <footer><small>&copy VEM All Rights Reserved</small></footer>
+</body>
+</html>
