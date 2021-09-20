@@ -44,6 +44,7 @@ router.get('/:id/edit',(req,res,next)=>{
 })
 //update event
 router.post('/:id',(req,res,next)=>{
+  console.log(req.body);
   var id=req.params.id;
   var str=req.body.even_category;
   var arr=str.split(',');

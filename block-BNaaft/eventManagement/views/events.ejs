@@ -36,11 +36,14 @@
                <h1>Title:-<%= event.title%></h1>
                 <li>Summary:-<%= event.summary%></li>
                 <li>Likes:-<%= event.like%> <a href="/events/<%=event.id%>/like">👍🏻</a> </li>
+                <li>Date:-<%=event.start_date.toString().substring(0,15)%></li>
                 
                 <a href="/events/<%=event._id%>"><button>show Event</button></a>
                 
                 </div>
               <% }) %>
+              
+                
         
     </main>
     <footer><small>&copy VEM All Rights Reserved</small></footer>
