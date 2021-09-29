@@ -16,11 +16,29 @@
         <a href="/events">All Events</a>
     <form action="/search/" method="GET">
         <label for="category">ByCategory</label>
-        <input type="text" name="fcategory">
+        
+        <select name="fcategory" id="fcategory">
+            <option value="">--select--</option>
+            <% events.forEach(event=>{%>
+               <% event.even_category.forEach(category=>{%>
+                    <option value="<%=category%>"><%=category%></option>
+               <% })%>
+                
+           <% })%>
+        </select>
         <label for="location">ByLoaction</label>
-        <input type="text" name="flocation">
+        <select name="flocation" id="flocation">
+            <option value="">--select--</option>
+            <% events.forEach(event=>{%>
+                
+                    <option value="<%=event.location%>"><%=event.location%></option>
+               
+                
+           <% })%>
+        </select>
         <label for="date">ByDate</label>
         <select name="fdate" id="date">
+            <option value="">--select--</option>
             <option value="latest">Latest</option>
             <option value="oldest">Oldest</option>
         </select>
