@@ -27,14 +27,14 @@ router.get('/search',(req,res,next)=>{
     var filtpara={}
   }
   if(query.fdate==='latest'){
- Event.find(filtpara).sort({start_date:1}).exec((err,events)=>{
+ Event.find(filtpara).sort({start_date:-1}).exec((err,events)=>{
    console.log(events)
    if(err) return next(err)
    res.render('events',{events})
  })
   }
 else if(query.fdate==='oldest'){
-  Event.find(filtpara).sort({start_date:-1}).exec((err,events)=>{
+  Event.find(filtpara).sort({start_date:1}).exec((err,events)=>{
     console.log(events)
     if(err) return next(err)
     res.render('events',{events})
