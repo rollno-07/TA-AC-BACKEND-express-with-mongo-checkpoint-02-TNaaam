@@ -13,7 +13,7 @@ var app = express();
 
 
 //Connection to DataBase
-mongoose.connect('mongodb://localhost/Management',(err)=>{
+mongoose.connect('mongodb+srv://admin:Viv0107@cluster1.kmbtdzl.mongodb.net/?retryWrites=true&w=majority',(err)=>{
     console.log(err ? err: "Connected to User DB")
 })
 
