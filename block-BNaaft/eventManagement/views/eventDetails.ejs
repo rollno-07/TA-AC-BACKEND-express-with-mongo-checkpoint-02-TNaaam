@@ -1,0 +1,77 @@
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Details</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </head>
+    <body>
+        <header>
+            <a href="/">Home</a>
+            <h1>Event Details</h1>
+            <a href="/events/new">Add Events</a>
+        </header>
+        <main>
+        <div class="main">
+            
+            <div class="container" >
+                <header><h1><%=event.title%></h1></header>
+                <div class="form-control">
+                    <h3>Summary:-<%=event.summary%></h3>
+                    <h3>host:-<%=event.host%></h3>
+                   <h3>From:-<%=event.start_date.toString().substring(0,15)%></h3>
+                        <h3>To:-<%=event.end_date.toString().substring(0,15)%></h3>
+                        <h3>Category:-<%=event.even_category%></h3>
+                    <h3>Location:-<%=event.location%></h3>
+                    <h3>Likes:-<%=event.like%></h3>
+                    <a href="/events">Back</a>
+                    
+                    <a href="/events/<%= event.id %>/edit"><button>Edit</button></a>
+                <a href="/events/<%= event.id %>/delete"><button>Delete</button></a>
+                
+            
+                </div>
+                
+                
+            </div>
+
+            
+            
+        </div>
+        <div class="main">
+            
+            <div class="container-remark" >
+                <form class="container" method="POST" action="/events/<%=event.id%>/remark">
+                    
+                    
+                <div class="remark">
+                    <label for="text">Remark</label>
+                   <textarea name="content" id="text" cols="30" rows="10" placeholder="Remark" required></textarea>
+                   <button type="submit" class="btn-remark">Remark</button>
+                   
+                </div>
+                </form>
+                <%event.remarkId.forEach(content=>{%>
+                    <p><%= content.content%></p>
+                    <p>Likes:-<%= content.likes%> <a href="/remarks/<%=content.id%>/like">👍🏻</a></p>
+
+                    <a href="/remarks/<%=content.id%>/delete">Delete</a>
+                    <a href="/remarks/<%=content.id%>/edit">Edit</a>
+                    <p>-------------------------</p>
+                <% })%>
+                </div>
+                
+                
+                
+            </div>
+
+            
+            
+        </div>
+        
+        
+        </main>
+        <footer><small>&copy VEM All Rights Reserved</small></footer>
+    </body>
+    </html>
